@@ -1,0 +1,33 @@
+group 'com.him.medications.api'
+version '1.0-SNAPSHOT'
+
+/**
+ * dubbo 独立jar包
+ */
+dependencies {
+
+    compile (group: 'com.alibaba', name: 'dubbo', version: '2.5.3'){
+        exclude(module: 'log4j')
+        exclude(module: 'logback-classic')
+        exclude(module: 'slf4j-log4j12')
+        exclude(group: 'org.springframework')
+    }
+
+    compile group: 'com.101tec', name: 'zkclient', version: '0.9'
+
+    compile (group: 'org.apache.zookeeper', name: 'zookeeper', version: '3.4.7'){
+        exclude(module: 'log4j')
+        exclude(module: 'slf4j-log4j12')
+    }
+}
+
+/**
+ * 全局过滤jar
+ */
+configurations {
+    compile.exclude module: 'spring-boot-starter-jdbc'
+    compile.exclude module: 'snakeyaml'
+    compile.exclude module: 'mybatis'
+    compile.exclude module: 'mybatis-spring'
+
+}

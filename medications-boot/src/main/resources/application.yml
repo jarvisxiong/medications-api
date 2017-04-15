@@ -1,0 +1,18 @@
+server:
+    address: 127.0.0.1
+    port: 9091
+    servlet-path: /drug
+
+# 服务名称可自定义
+spring:
+    aop:
+      auto: true
+      proxy-target-class: false
+    dubbo:
+      appname: spring-boot-starter-dubbo-test
+      protocol: dubbo
+      registry: zookeeper://127.0.0.1:2181
+      port: 20801
+      group: test
+      version: 1.0.0
+      

@@ -1,0 +1,6 @@
+rootProject.name = 'medications-api'
+include 'medications-boot'
+include 'medications-web'
+include 'spring-boot-starter-dubbo'
+
+

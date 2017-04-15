@@ -1,0 +1,52 @@
+allprojects {
+    group 'com.him.medications.api'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    apply plugin: 'maven'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+/**
+ * 子项目共用配置
+ */
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'groovy'
+
+    sourceCompatibility = '1.7'
+    targetCompatibility = '1.7'
+
+    [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
+
+    repositories {
+        mavenLocal()
+        ivy {
+            url '/Users/apple/maven-libs/him-release'
+        }
+        mavenCentral()
+    }
+
+    apply from: "${rootProject.projectDir}/gradle/lib.gradle"
+    apply from: "${rootProject.projectDir}/gradle/groovy.gradle"
+
+    /**
+     * 全局过滤jar
+     */
+    configurations {
+        compile.exclude module: 'spring-boot-starter-jdbc'
+        compile.exclude module: 'mybatis'
+        compile.exclude module: 'mybatis-spring'
+        compile.exclude module: 'mysql-connector-java'
+
+    }
+
+}
+
+
